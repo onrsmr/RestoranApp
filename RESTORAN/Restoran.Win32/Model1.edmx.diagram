@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4f03784541c48a2b6ad5cb5f4bd2c71" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="dbRestoranModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbBoylar" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbFatura" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbFiyatlar" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbGarson" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbHasilat" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbIcecekler" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbMasalar" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbMenu" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbMusteri" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbPersonel" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbSatis" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbSiparis" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbSiparisDetay" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbSoslar" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="dbRestoranModel.tbYonetici" Width="1.5" PointX="0.75" PointY="5.375" />
+        <AssociationConnector Association="dbRestoranModel.FK_tbSiparisDetay_tbGarson1" />
+        <AssociationConnector Association="dbRestoranModel.FK_tbSiparisDetay_tbYonetici1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

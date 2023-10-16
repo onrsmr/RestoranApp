@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbRestoranModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbBoylar">
+          <Key>
+            <PropertyRef Name="BoyAdi" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BoyAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbFatura">
+          <Key>
+            <PropertyRef Name="FaturaNo" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FaturaNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FaturaTarihi" Type="datetime" />
+          <Property Name="FaturaTutari" Type="int" />
+          <Property Name="siparisDetay" Type="ntext" />
+        </EntityType>
+        <EntityType Name="tbFiyatlar">
+          <Key>
+            <PropertyRef Name="UrunKodu" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunKodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UrunAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="SatisFiyati" Type="int" />
+        </EntityType>
+        <EntityType Name="tbGarson">
+          <Key>
+            <PropertyRef Name="garsonNo" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="garsonNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbHasilat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="MasaNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="garsonNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="odemeTuru" Type="ntext" />
+          <Property Name="toplamCiro" Type="int" />
+        </EntityType>
+        <EntityType Name="tbIcecekler">
+          <Key>
+            <PropertyRef Name="IcecekAdi" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IcecekAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMasalar">
+          <Key>
+            <PropertyRef Name="MasaNo" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasaNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMenu">
+          <Key>
+            <PropertyRef Name="MenuKodu" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuKodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MenuIcerigi" Type="ntext" />
+          <Property Name="MenuFiyati" Type="int" />
+        </EntityType>
+        <EntityType Name="tbMusteri">
+          <Key>
+            <PropertyRef Name="MusteriNo" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MusteriAdiSoyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="MusteriGsm" Type="nvarchar" MaxLength="50" />
+          <Property Name="rezervasyonTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbPersonel">
+          <Key>
+            <PropertyRef Name="PersonelNo" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersonelAdiSoyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonelTcKimlikNo" Type="nvarchar" MaxLength="11" />
+          <Property Name="PersonelGsmNo" Type="ntext" />
+          <Property Name="IseGirisTarihi" Type="datetime" />
+          <Property Name="IstenCikisTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbSatis">
+          <Key>
+            <PropertyRef Name="satisNo" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="satisNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="garsonNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="masaNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="menu" Type="nvarchar" MaxLength="50" />
+          <Property Name="icecek" Type="nvarchar" MaxLength="50" />
+          <Property Name="sos" Type="nvarchar" MaxLength="50" />
+          <Property Name="boy" Type="nvarchar" MaxLength="50" />
+          <Property Name="notlar" Type="ntext" />
+          <Property Name="odemeTuru" Type="nvarchar" MaxLength="50" />
+          <Property Name="satisTutar" Type="int" />
+        </EntityType>
+        <EntityType Name="tbSiparis">
+          <Key>
+            <PropertyRef Name="siparisNo" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="siparisNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="garsonNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="masaNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="menu" Type="nvarchar" MaxLength="50" />
+          <Property Name="icecek" Type="nvarchar" MaxLength="50" />
+          <Property Name="sos" Type="nvarchar" MaxLength="50" />
+          <Property Name="boy" Type="nvarchar" MaxLength="50" />
+          <Property Name="notlar" Type="ntext" />
+          <Property Name="odemeTuru" Type="nvarchar" MaxLength="50" />
+          <Property Name="masaToplamTutar" Type="int" />
+        </EntityType>
+        <EntityType Name="tbSiparisDetay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="siparisNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="garsonNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="masaNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="siparisDetay" Type="ntext" />
+        </EntityType>
+        <EntityType Name="tbSoslar">
+          <Key>
+            <PropertyRef Name="SosAdi" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SosAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbYonetici">
+          <Key>
+            <PropertyRef Name="adminNo" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adminNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tbSiparisDetay_tbGarson1">
+          <End Role="tbGarson" Type="Self.tbGarson" Multiplicity="0..1" />
+          <End Role="tbSiparisDetay" Type="Self.tbSiparisDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbGarson">
+              <PropertyRef Name="garsonNo" />
+            </Principal>
+            <Dependent Role="tbSiparisDetay">
+              <PropertyRef Name="garsonNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbSiparisDetay_tbYonetici1">
+          <End Role="tbYonetici" Type="Self.tbYonetici" Multiplicity="0..1" />
+          <End Role="tbSiparisDetay" Type="Self.tbSiparisDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbYonetici">
+              <PropertyRef Name="adminNo" />
+            </Principal>
+            <Dependent Role="tbSiparisDetay">
+              <PropertyRef Name="garsonNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbRestoranModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbBoylar" EntityType="Self.tbBoylar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbFatura" EntityType="Self.tbFatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbFiyatlar" EntityType="Self.tbFiyatlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbGarson" EntityType="Self.tbGarson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbHasilat" EntityType="Self.tbHasilat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbIcecekler" EntityType="Self.tbIcecekler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMasalar" EntityType="Self.tbMasalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMenu" EntityType="Self.tbMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMusteri" EntityType="Self.tbMusteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPersonel" EntityType="Self.tbPersonel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbSatis" EntityType="Self.tbSatis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbSiparis" EntityType="Self.tbSiparis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbSiparisDetay" EntityType="Self.tbSiparisDetay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbSoslar" EntityType="Self.tbSoslar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbYonetici" EntityType="Self.tbYonetici" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbSiparisDetay_tbGarson1" Association="Self.FK_tbSiparisDetay_tbGarson1">
+            <End Role="tbGarson" EntitySet="tbGarson" />
+            <End Role="tbSiparisDetay" EntitySet="tbSiparisDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbSiparisDetay_tbYonetici1" Association="Self.FK_tbSiparisDetay_tbYonetici1">
+            <End Role="tbYonetici" EntitySet="tbYonetici" />
+            <End Role="tbSiparisDetay" EntitySet="tbSiparisDetay" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbRestoranModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbRestoranEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="dbRestoranModel.sysdiagrams" />
+          <EntitySet Name="tbBoylar" EntityType="dbRestoranModel.tbBoylar" />
+          <EntitySet Name="tbFatura" EntityType="dbRestoranModel.tbFatura" />
+          <EntitySet Name="tbFiyatlar" EntityType="dbRestoranModel.tbFiyatlar" />
+          <EntitySet Name="tbGarson" EntityType="dbRestoranModel.tbGarson" />
+          <EntitySet Name="tbHasilat" EntityType="dbRestoranModel.tbHasilat" />
+          <EntitySet Name="tbIcecekler" EntityType="dbRestoranModel.tbIcecekler" />
+          <EntitySet Name="tbMasalar" EntityType="dbRestoranModel.tbMasalar" />
+          <EntitySet Name="tbMenu" EntityType="dbRestoranModel.tbMenu" />
+          <EntitySet Name="tbMusteri" EntityType="dbRestoranModel.tbMusteri" />
+          <EntitySet Name="tbPersonel" EntityType="dbRestoranModel.tbPersonel" />
+          <EntitySet Name="tbSatis" EntityType="dbRestoranModel.tbSatis" />
+          <EntitySet Name="tbSiparis" EntityType="dbRestoranModel.tbSiparis" />
+          <EntitySet Name="tbSiparisDetay" EntityType="dbRestoranModel.tbSiparisDetay" />
+          <EntitySet Name="tbSoslar" EntityType="dbRestoranModel.tbSoslar" />
+          <EntitySet Name="tbYonetici" EntityType="dbRestoranModel.tbYonetici" />
+          <AssociationSet Name="FK_tbSiparisDetay_tbGarson1" Association="dbRestoranModel.FK_tbSiparisDetay_tbGarson1">
+            <End Role="tbGarson" EntitySet="tbGarson" />
+            <End Role="tbSiparisDetay" EntitySet="tbSiparisDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbSiparisDetay_tbYonetici1" Association="dbRestoranModel.FK_tbSiparisDetay_tbYonetici1">
+            <End Role="tbYonetici" EntitySet="tbYonetici" />
+            <End Role="tbSiparisDetay" EntitySet="tbSiparisDetay" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbBoylar">
+          <Key>
+            <PropertyRef Name="BoyAdi" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BoyAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbFatura">
+          <Key>
+            <PropertyRef Name="FaturaNo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FaturaNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FaturaTarihi" Type="DateTime" Precision="3" />
+          <Property Name="FaturaTutari" Type="Int32" />
+          <Property Name="siparisDetay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbFiyatlar">
+          <Key>
+            <PropertyRef Name="UrunKodu" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunKodu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UrunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SatisFiyati" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbGarson">
+          <Key>
+            <PropertyRef Name="garsonNo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="garsonNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbSiparisDetay" Relationship="dbRestoranModel.FK_tbSiparisDetay_tbGarson1" FromRole="tbGarson" ToRole="tbSiparisDetay" />
+        </EntityType>
+        <EntityType Name="tbHasilat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="MasaNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="garsonNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="odemeTuru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="toplamCiro" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbIcecekler">
+          <Key>
+            <PropertyRef Name="IcecekAdi" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IcecekAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbMasalar">
+          <Key>
+            <PropertyRef Name="MasaNo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasaNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbMenu">
+          <Key>
+            <PropertyRef Name="MenuKodu" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuKodu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuIcerigi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MenuFiyati" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbMusteri">
+          <Key>
+            <PropertyRef Name="MusteriNo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriAdiSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriGsm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rezervasyonTarihi" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbPersonel">
+          <Key>
+            <PropertyRef Name="PersonelNo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelAdiSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelTcKimlikNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelGsmNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IseGirisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="IstenCikisTarihi" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbSatis">
+          <Key>
+            <PropertyRef Name="satisNo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="satisNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="garsonNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="masaNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="icecek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="boy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notlar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="odemeTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="satisTutar" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbSiparis">
+          <Key>
+            <PropertyRef Name="siparisNo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="siparisNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="garsonNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="masaNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="icecek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="boy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notlar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="odemeTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="masaToplamTutar" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbSiparisDetay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="siparisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="garsonNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="masaNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="siparisDetay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbGarson" Relationship="dbRestoranModel.FK_tbSiparisDetay_tbGarson1" FromRole="tbSiparisDetay" ToRole="tbGarson" />
+          <NavigationProperty Name="tbYonetici" Relationship="dbRestoranModel.FK_tbSiparisDetay_tbYonetici1" FromRole="tbSiparisDetay" ToRole="tbYonetici" />
+        </EntityType>
+        <EntityType Name="tbSoslar">
+          <Key>
+            <PropertyRef Name="SosAdi" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SosAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbYonetici">
+          <Key>
+            <PropertyRef Name="adminNo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adminNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbSiparisDetay" Relationship="dbRestoranModel.FK_tbSiparisDetay_tbYonetici1" FromRole="tbYonetici" ToRole="tbSiparisDetay" />
+        </EntityType>
+        <Association Name="FK_tbSiparisDetay_tbGarson1">
+          <End Type="dbRestoranModel.tbGarson" Role="tbGarson" Multiplicity="0..1" />
+          <End Type="dbRestoranModel.tbSiparisDetay" Role="tbSiparisDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbGarson">
+              <PropertyRef Name="garsonNo" />
+            </Principal>
+            <Dependent Role="tbSiparisDetay">
+              <PropertyRef Name="garsonNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbSiparisDetay_tbYonetici1">
+          <End Type="dbRestoranModel.tbYonetici" Role="tbYonetici" Multiplicity="0..1" />
+          <End Type="dbRestoranModel.tbSiparisDetay" Role="tbSiparisDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbYonetici">
+              <PropertyRef Name="adminNo" />
+            </Principal>
+            <Dependent Role="tbSiparisDetay">
+              <PropertyRef Name="garsonNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbRestoranModelStoreContainer" CdmEntityContainer="dbRestoranEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbRestoranModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbBoylar">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbBoylar">
+              <MappingFragment StoreEntitySet="tbBoylar">
+                <ScalarProperty Name="BoyAdi" ColumnName="BoyAdi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbFatura">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbFatura">
+              <MappingFragment StoreEntitySet="tbFatura">
+                <ScalarProperty Name="siparisDetay" ColumnName="siparisDetay" />
+                <ScalarProperty Name="FaturaTutari" ColumnName="FaturaTutari" />
+                <ScalarProperty Name="FaturaTarihi" ColumnName="FaturaTarihi" />
+                <ScalarProperty Name="FaturaNo" ColumnName="FaturaNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbFiyatlar">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbFiyatlar">
+              <MappingFragment StoreEntitySet="tbFiyatlar">
+                <ScalarProperty Name="SatisFiyati" ColumnName="SatisFiyati" />
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+                <ScalarProperty Name="UrunKodu" ColumnName="UrunKodu" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbGarson">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbGarson">
+              <MappingFragment StoreEntitySet="tbGarson">
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="garsonNo" ColumnName="garsonNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbHasilat">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbHasilat">
+              <MappingFragment StoreEntitySet="tbHasilat">
+                <ScalarProperty Name="toplamCiro" ColumnName="toplamCiro" />
+                <ScalarProperty Name="odemeTuru" ColumnName="odemeTuru" />
+                <ScalarProperty Name="garsonNo" ColumnName="garsonNo" />
+                <ScalarProperty Name="MasaNo" ColumnName="MasaNo" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbIcecekler">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbIcecekler">
+              <MappingFragment StoreEntitySet="tbIcecekler">
+                <ScalarProperty Name="IcecekAdi" ColumnName="IcecekAdi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMasalar">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbMasalar">
+              <MappingFragment StoreEntitySet="tbMasalar">
+                <ScalarProperty Name="MasaNo" ColumnName="MasaNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMenu">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbMenu">
+              <MappingFragment StoreEntitySet="tbMenu">
+                <ScalarProperty Name="MenuFiyati" ColumnName="MenuFiyati" />
+                <ScalarProperty Name="MenuIcerigi" ColumnName="MenuIcerigi" />
+                <ScalarProperty Name="MenuKodu" ColumnName="MenuKodu" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMusteri">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbMusteri">
+              <MappingFragment StoreEntitySet="tbMusteri">
+                <ScalarProperty Name="rezervasyonTarihi" ColumnName="rezervasyonTarihi" />
+                <ScalarProperty Name="MusteriGsm" ColumnName="MusteriGsm" />
+                <ScalarProperty Name="MusteriAdiSoyadi" ColumnName="MusteriAdiSoyadi" />
+                <ScalarProperty Name="MusteriNo" ColumnName="MusteriNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPersonel">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbPersonel">
+              <MappingFragment StoreEntitySet="tbPersonel">
+                <ScalarProperty Name="IstenCikisTarihi" ColumnName="IstenCikisTarihi" />
+                <ScalarProperty Name="IseGirisTarihi" ColumnName="IseGirisTarihi" />
+                <ScalarProperty Name="PersonelGsmNo" ColumnName="PersonelGsmNo" />
+                <ScalarProperty Name="PersonelTcKimlikNo" ColumnName="PersonelTcKimlikNo" />
+                <ScalarProperty Name="PersonelAdiSoyadi" ColumnName="PersonelAdiSoyadi" />
+                <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbSatis">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbSatis">
+              <MappingFragment StoreEntitySet="tbSatis">
+                <ScalarProperty Name="satisTutar" ColumnName="satisTutar" />
+                <ScalarProperty Name="odemeTuru" ColumnName="odemeTuru" />
+                <ScalarProperty Name="notlar" ColumnName="notlar" />
+                <ScalarProperty Name="boy" ColumnName="boy" />
+                <ScalarProperty Name="sos" ColumnName="sos" />
+                <ScalarProperty Name="icecek" ColumnName="icecek" />
+                <ScalarProperty Name="menu" ColumnName="menu" />
+                <ScalarProperty Name="masaNo" ColumnName="masaNo" />
+                <ScalarProperty Name="garsonNo" ColumnName="garsonNo" />
+                <ScalarProperty Name="satisNo" ColumnName="satisNo" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbSiparis">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbSiparis">
+              <MappingFragment StoreEntitySet="tbSiparis">
+                <ScalarProperty Name="masaToplamTutar" ColumnName="masaToplamTutar" />
+                <ScalarProperty Name="odemeTuru" ColumnName="odemeTuru" />
+                <ScalarProperty Name="notlar" ColumnName="notlar" />
+                <ScalarProperty Name="boy" ColumnName="boy" />
+                <ScalarProperty Name="sos" ColumnName="sos" />
+                <ScalarProperty Name="icecek" ColumnName="icecek" />
+                <ScalarProperty Name="menu" ColumnName="menu" />
+                <ScalarProperty Name="masaNo" ColumnName="masaNo" />
+                <ScalarProperty Name="garsonNo" ColumnName="garsonNo" />
+                <ScalarProperty Name="siparisNo" ColumnName="siparisNo" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbSiparisDetay">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbSiparisDetay">
+              <MappingFragment StoreEntitySet="tbSiparisDetay">
+                <ScalarProperty Name="siparisDetay" ColumnName="siparisDetay" />
+                <ScalarProperty Name="masaNo" ColumnName="masaNo" />
+                <ScalarProperty Name="garsonNo" ColumnName="garsonNo" />
+                <ScalarProperty Name="siparisNo" ColumnName="siparisNo" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbSoslar">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbSoslar">
+              <MappingFragment StoreEntitySet="tbSoslar">
+                <ScalarProperty Name="SosAdi" ColumnName="SosAdi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbYonetici">
+            <EntityTypeMapping TypeName="dbRestoranModel.tbYonetici">
+              <MappingFragment StoreEntitySet="tbYonetici">
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="adminNo" ColumnName="adminNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
